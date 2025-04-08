@@ -5,11 +5,11 @@ const router = express.Router();
 
 
 router.post(
-  '/create-student',
+  '/create-user',
   UserController.createUSer,
 );
-router.get('/:userId');
-router.delete('/:userId');
-router.get('/');
+// router.get('/:userId');
+// router.delete('/:userId');
+// router.get('/');
 
 export const UserRouters = router;
