@@ -8,8 +8,11 @@ import { Types } from 'mongoose';
 
 export type IUser = {
   name: string;
+  age: number;
   email: string;
   password: string;
   needsPasswordChange: boolean;
+  photo?: string | null;
   role?: 'customer' | 'admin';
+  userStatus: 'active' | 'inactive';
 };
