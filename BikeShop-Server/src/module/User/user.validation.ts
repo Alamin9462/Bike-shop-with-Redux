@@ -14,6 +14,9 @@ export const UserValidationSchema = z.object({
     .string({ required_error: 'Password is required' })
     .min(6, 'Password must be at least 6 characters'),
   photo: z.string().optional(),
+  role:z.string().optional(),
+  userStatus:z.string().optional(),
+
 });
 
 export const UserValidation = {
