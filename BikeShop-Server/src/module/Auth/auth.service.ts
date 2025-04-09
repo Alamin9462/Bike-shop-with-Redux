@@ -1,7 +1,9 @@
+import config from '../../app/config';
 import AppError from '../../app/errors/AppError';
 import UserModel from '../User/user.model';
 import { TLoginUser } from './auth.interface';
 import httpStatus from 'http-status';
+import jwt from 'jsonwebtoken';
 
 const loginUser = async (payload: TLoginUser) => {
   console.log(payload);
@@ -24,8 +26,21 @@ const loginUser = async (payload: TLoginUser) => {
   }
 
   // Access Granted: Send AccessToken, RefereshToken
+  // create token and send to the client
 
-  return {};
+  const jwtPayload = {
+    email: user,
+    role: user.role,
+  };
+
+  const accessToken = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
+    expiresIn: '10d',
+  });
+
+  return {
+    accessToken,
+    needsPasswordChange: user.needsPasswordChange,
+  };
 };
 
 export const AuthServices = {

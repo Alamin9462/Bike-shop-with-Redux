@@ -18,6 +18,10 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: [true, 'Password is required'],
     },
+    needsPasswordChange: {
+      type: Boolean,
+      default: true,
+    },
     role: {
       type: String,
       enum: ['customer', 'admin'],
@@ -26,7 +30,7 @@ const userSchema = new Schema<IUser>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const UserModel = model<IUser>('User', userSchema);

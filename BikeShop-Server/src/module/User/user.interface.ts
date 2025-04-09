@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
 // export type UserName = {
 //     firstName: string;
@@ -7,8 +7,9 @@ import { Types } from "mongoose";
 //   };
 
 export type IUser = {
-    name: string;
-    email: string;
-    password: string;
-    role?: 'customer' | 'admin';
-}
+  name: string;
+  email: string;
+  password: string;
+  needsPasswordChange: boolean;
+  role?: 'customer' | 'admin';
+};
