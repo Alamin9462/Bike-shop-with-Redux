@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { IUser } from './user.interface';
+import { hash } from 'bcrypt';
 
 const userSchema = new Schema<IUser>(
   {
@@ -13,6 +14,7 @@ const userSchema = new Schema<IUser>(
       type: Number,
       required: [true, 'Please enter your age'],
     },
+    // age: {type: Number},
 
     email: {
       type: String,
@@ -31,7 +33,10 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: [true, 'Password is required'],
     },
-    photo: String,
+    photo: {
+      type: String,
+      
+    },
     
     role: {
       type: String,
@@ -52,6 +57,21 @@ const userSchema = new Schema<IUser>(
     timestamps: true,
   },
 );
+
+// pre hook middleware include password hash maping
+userSchema.pre('save', async function(next){
+
+  const hashedPassword =  await hash(this.password, 10)
+  this.password = hashedPassword
+
+  next()
+})
+
+// post hook user get operation and password feild hiding
+userSchema.post('save', function (doc, next){
+  doc.password = '';
+  next();
+})
 
 const UserModel = model<IUser>('User', userSchema);
 
