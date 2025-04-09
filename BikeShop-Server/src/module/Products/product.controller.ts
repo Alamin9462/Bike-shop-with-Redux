@@ -1,21 +1,21 @@
 import catchAsync from "../../app/utils/catchAsync";
 import sendResponse from "../../app/utils/sendResponse";
-import { UserServices } from "./user.service";
+import { ProductService } from "./product.service";
 import httpStatus from 'http-status-codes';
 
-const createUSer = catchAsync(async (req, res)=>{
+const createProduct = catchAsync(async (req, res)=>{
     const payload = req.body;
-    const result = await UserServices.createUserToDB(payload);
+    const result = await ProductService.createProductToDB(payload);
     sendResponse(res,{
         statusCode: httpStatus.OK,
         success: true,
-        message: "User created successfully",
+        message: "Product created successfully",
         data: result,
     })
     
 })
-const getUser = catchAsync(async (req, res) => {
-    const result = await UserServices.getUserToDB()
+const getProduct = catchAsync(async (req, res) => {
+    const result = await ProductService.getProductToDB()
   
     sendResponse(res,{
         statusCode: httpStatus.OK,
@@ -27,11 +27,11 @@ const getUser = catchAsync(async (req, res) => {
   })
 
 
-  const getSingleUser = catchAsync(async (req, res) => {
+  const getSingleProduct = catchAsync(async (req, res) => {
     console.log(req.params)
-    const userId = req.params.userId
+    const productId = req.params.productId
   
-    const result = await UserServices.getSingleUserToDB(userId)
+    const result = await ProductService.getSingleProductToDB(productId)
   
     sendResponse(res,{
         statusCode: httpStatus.OK,
@@ -41,10 +41,10 @@ const getUser = catchAsync(async (req, res) => {
     })
   })
 
-  const updateUser = catchAsync(async (req, res) => {
-    const userId = req.params.userId
+  const updateProduct= catchAsync(async (req, res) => {
+    const productId = req.params.productId
     const body = req.body
-    const result = await UserServices.updateUserToDB(userId, body)
+    const result = await ProductService.updateProductToDB(productId, body)
   
     sendResponse(res,{
         statusCode: httpStatus.OK,
@@ -55,23 +55,23 @@ const getUser = catchAsync(async (req, res) => {
   })
 
 
-  const deleteUser = catchAsync(async (req, res) => {
-    const userId = req.params.userId
-    await UserServices.deleteUserToDB(userId)
+  const deleteProduct = catchAsync(async (req, res) => {
+    const {productId} = req.params
+   const result =  await ProductService.deleteProductToDB(productId)
   
     sendResponse(res,{
         statusCode: httpStatus.OK,
         success: true,
         message: "User deleted successfully",
-        data: {},
+        data: result,
     })
   })
 
 
-export const UserController = {
-    createUSer,
-    getUser,
-    getSingleUser,
-    updateUser,
-    deleteUser
+export const ProductController = {
+    createProduct,
+    getProduct,
+    getSingleProduct,
+    updateProduct,
+    deleteProduct
 }
