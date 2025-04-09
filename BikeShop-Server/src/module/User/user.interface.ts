@@ -1,4 +1,5 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
+import { USER_ROLE } from './user.constant';
 
 // export type UserName = {
 //     firstName: string;
@@ -7,11 +8,14 @@ import { Types } from "mongoose";
 //   };
 
 export type IUser = {
-    name: string;
-    age: number;
-    email: string;
-    password: string;
-    photo?: string | null;
-    role?: 'customer' | 'admin';
-    userStatus: 'active' | 'inactive'
-}
+  name: string;
+  age: number;
+  email: string;
+  password: string;
+  needsPasswordChange: boolean;
+  photo?: string | null;
+  role?: 'customer' | 'admin';
+  userStatus: 'active' | 'inactive';
+};
+
+export type TUserRole = keyof typeof USER_ROLE;
