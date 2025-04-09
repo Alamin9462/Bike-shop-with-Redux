@@ -4,8 +4,9 @@ import AppError from '../errors/AppError';
 import httpStatus from 'http-status';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../config';
+import { TUserRole } from '../../module/User/user.interface';
 
-const auth = () => {
+const auth = (...requiredRoles: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization;
 
@@ -28,6 +29,17 @@ const auth = () => {
         }
         // decoded undefined
         // console.log(decoded);
+
+        const role = (decoded as JwtPayload).role;
+
+        // check if role is included
+        if (requiredRoles && !requiredRoles.includes(role)) {
+          throw new AppError(
+            httpStatus.UNAUTHORIZED,
+            'You are not authorized!',
+          );
+        }
+
         req.user = decoded as JwtPayload; // assign user to express
 
         next();
