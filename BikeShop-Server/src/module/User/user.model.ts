@@ -30,6 +30,7 @@ const userSchema = new Schema<IUser>(
     password: {
       type: String,
       required: [true, 'Password is required'],
+      select: 0, // hide password
     },
     needsPasswordChange: {
       type: Boolean,
