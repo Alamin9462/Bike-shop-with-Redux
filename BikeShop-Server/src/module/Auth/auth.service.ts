@@ -1,48 +1,56 @@
-import config from '../../app/config';
 import AppError from '../../app/errors/AppError';
+import { IUser } from '../User/user.interface';
 import UserModel from '../User/user.model';
-import { TLoginUser } from './auth.interface';
+import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken'
 import httpStatus from 'http-status';
-import jwt from 'jsonwebtoken';
+import config from '../../app/config';
 
-const loginUser = async (payload: TLoginUser) => {
-  console.log(payload);
+const register = async (payload: IUser) => {
+  const result = await UserModel.create(payload)
+  return result;
+} 
 
-  // checking if the user is exist
-  const user = await UserModel.findOne({ email: payload?.email });
-  console.log(user);
-
+const login = async (payload : {email:string, password:string}) => {
+  const user = await UserModel.findOne({ email: payload?.email }).select('+password');
+  
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, 'This user is not found!');
   }
+  
+  // checking the user active 
 
-  // checking if the password is correct
-  const isPasswordMatched = await UserModel.findOne({
-    password: payload?.password,
-  });
-
-  if (!isPasswordMatched) {
-    throw new AppError(httpStatus.FORBIDDEN, 'Password does not matched!');
+  const userStatus = user?.userStatus;
+  if (userStatus === 'inactive') {
+    throw new Error('This user is blocked Account!!')
   }
 
-  // Access Granted: Send AccessToken, RefereshToken
-  // create token and send to the client
+  // password checking 
 
-  const jwtPayload = {
-    email: user.email,
-    role: user.role,
-  };
+  const matchedPassword = await bcrypt.compare(
+    payload?.password,
+    user?.password
+  )
+ 
+  if(!matchedPassword){
+    throw new AppError(httpStatus.FORBIDDEN,'invalid password! Please Enter currect Password')
+  }
 
-  const accessToken = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
-    expiresIn: '10d',
-  });
+  // create jwt token 
 
+  const jwtTokenPayload = {
+    email: user?.email,
+    role: user?.role,
+  }
+
+  const tokenGenarate = jwt.sign(jwtTokenPayload, config.jwt_access_secret as string, {expiresIn: '5d'});
+ 
   return {
-    accessToken,
-    needsPasswordChange: user.needsPasswordChange,
-  };
+    tokenGenarate, user
+  }
 };
 
 export const AuthServices = {
-  loginUser,
+  register,
+  login
 };
