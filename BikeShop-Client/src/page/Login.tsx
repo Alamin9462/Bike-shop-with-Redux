@@ -1,11 +1,50 @@
+import { FieldValues } from "react-hook-form";
+import { useAppDispatch } from "../redux/hook";
+import { verifyToken } from "../utils/verifyToken";
+import { setUser, TUser } from "../redux/features/auth/authSlice";
+import { toast } from "sonner";
+import { useLoginMutation } from "../redux/features/auth/authApi";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+  
+  
+    const [login] = useLoginMutation();
+  
+    const onSubmit = async (data: FieldValues) => {
+      console.log(data);
+      const toastId = toast.loading('Logging in');
+  
+      try {
+        const userInfo = {
+          id: data.userId,
+          password: data.password,
+        };
+        const res = await login(userInfo).unwrap();
+  
+        const user = verifyToken(res.data.accessToken) as TUser;
+        dispatch(setUser({ user: user, token: res.data.accessToken }));
+        toast.success('Logged in', { id: toastId, duration: 2000 });
+  
+        if (res.data.needsPasswordChange) {
+          navigate(`/change-password`);
+        } else {
+          navigate(`/${user.role}/dashboard`);
+        }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
+        toast.error('Something went wrong', { id: toastId, duration: 2000 });
+      }
+    };
+
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Login</h2>
-          <form className="space-y-4">
+          <form onSubmit={onSubmit} className="space-y-4">
             {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">

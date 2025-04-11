@@ -8,12 +8,12 @@ import AdminLayout from "../layout/AdminLayout";
 import ManageUsers from "../admin/ManageUsers";
 import ManageProducts from "../admin/ManageProducts";
 import ManageOrders from "../admin/ManageOrders";
-import Login from "../page/Login";
 import Register from "../page/Register";
 import MyOrder from "../user/MyOrder";
 import ProfileSettings from "../user/ProfileSettings";
 import DashboardLayout from "../layout/DashboardLayout";
 import Checkout from "../page/Checkout";
+import Login from "../page/Login";
 
 const router = createBrowserRouter([
     {

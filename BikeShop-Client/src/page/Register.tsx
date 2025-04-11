@@ -1,9 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const {register, handleSubmit} = useForm();
+    const onSubmit = (data: any) => {
+        console.log(data);
+    }
     return (
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg">
+           <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Create Account</h2>
         <form className="space-y-5">
           {/* Name */}
@@ -76,7 +84,7 @@ const Register = () => {
         </form>
       </div>
     </div>
-        </div>
+        </form>
     );
 };
 
