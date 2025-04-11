@@ -2,7 +2,7 @@ import { IUser } from './user.interface';
 import UserModel from './user.model';
 
 const createUserToDB = async (payload: IUser):Promise<IUser> => {
-  payload.role = 'admin';
+  // payload.role = 'admin';
   const result = await UserModel.create(payload);
   return result;
 };
