@@ -72,25 +72,6 @@ const refreshToken = async (token: string) => {
   const decoded = jwt.verify(
     token,
     config.jwt_refresh_secret as string,
-    // function (err, decoded) {
-    //   // err
-    //   if (err) {
-    //     throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
-    //   }
-    //   // decoded undefined
-    //   // console.log(decoded);
-
-    //   const role = (decoded as JwtPayload).role;
-
-    //   // check if role is included
-    //   if (requiredRoles && !requiredRoles.includes(role)) {
-    //     throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
-    //   }
-
-    //   req.user = decoded as JwtPayload; // assign user to express
-
-    //   next();
-    // },
   ) as JwtPayload;
 
   const { email, iat } = decoded;
