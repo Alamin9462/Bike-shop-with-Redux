@@ -32,12 +32,12 @@ const userSchema = new Schema<IUser>(
     password: {
       type: String,
       required: [true, 'Password is required'],
+      select: 0, // hide password
     },
     photo: {
       type: String,
-      
     },
-    
+
     role: {
       type: String,
       enum: ['customer', 'admin'],
@@ -58,19 +58,18 @@ const userSchema = new Schema<IUser>(
 );
 
 // pre hook middleware include password hash maping
-userSchema.pre('save', async function(next){
+userSchema.pre('save', async function (next) {
+  const hashedPassword = await hash(this.password, 10);
+  this.password = hashedPassword;
 
-  const hashedPassword =  await hash(this.password, 10)
-  this.password = hashedPassword
-
-  next()
-})
+  next();
+});
 
 // post hook user get operation and password feild hiding
-userSchema.post('save', function (doc, next){
+userSchema.post('save', function (doc, next) {
   doc.password = '';
   next();
-})
+});
 
 const UserModel = model<IUser>('User', userSchema);
 
