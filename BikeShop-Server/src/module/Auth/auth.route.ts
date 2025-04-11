@@ -12,8 +12,16 @@ router.post(
   AuthControllers.loginUser,
 );
 
-router.post('/register', validateRequest(UserValidation.UserValidationSchema),
-AuthControllers.registationUser
-)
+router.post(
+  '/register',
+  validateRequest(UserValidation.UserValidationSchema),
+  AuthControllers.registationUser,
+);
+
+router.post(
+  '/refresh-token',
+  validateRequest(AuthValidation.RefreshTokenValidationSchema),
+  AuthControllers.refreshToken,
+);
 
 export const AuthRoutes = router;

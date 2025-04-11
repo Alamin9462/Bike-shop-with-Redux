@@ -14,7 +14,6 @@ const createUSer = catchAsync(async (req, res) => {
   });
 });
 const getUser = catchAsync(async (req, res) => {
-  console.log('test: ', req.user);
   const result = await UserServices.getUserToDB();
 
   sendResponse(res, {
