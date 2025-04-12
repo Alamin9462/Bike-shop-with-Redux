@@ -3,6 +3,7 @@ import { sidebarItemsGenerator } from '../../utils/sidebarItemsGenerator';
 import { adminPaths } from '../../routes/admin.routes';
 import { useAppSelector } from '../../redux/hooks';
 import { selectCurrentUser } from '../../redux/features/auth/authSlice';
+import { customerPaths } from '../../routes/customer.routes';
 
 const { Sider } = Layout;
 
@@ -21,7 +22,7 @@ const Sidebar = () => {
       break;
 
     case userRole.CUSTOMER:
-      sidebarItems = sidebarItemsGenerator(adminPaths, userRole.CUSTOMER);
+      sidebarItems = sidebarItemsGenerator(customerPaths, userRole.CUSTOMER);
       break;
 
     default:

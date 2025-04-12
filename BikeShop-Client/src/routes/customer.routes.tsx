@@ -1,5 +1,5 @@
 import CustomerDashboard from '../page/customer/CustomerDashboard';
-import Orders from '../page/customer/Orders';
+import MyOrders from '../page/customer/MyOrders';
 
 export const customerPaths = [
   {
@@ -8,8 +8,8 @@ export const customerPaths = [
     element: <CustomerDashboard />,
   },
   {
-    name: 'Orders',
+    name: 'My Orders',
     path: 'my-orders',
-    element: <Orders />,
+    element: <MyOrders />,
   },
 ];

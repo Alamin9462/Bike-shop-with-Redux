@@ -1,5 +1,5 @@
 import AdminDashboard from '../page/admin/AdminDashboard';
-import Orders from '../page/customer/Orders';
+import Orders from '../page/admin/Orders';
 
 // A centralised array for routes and sidebar items (like union)
 export const adminPaths = [
@@ -8,18 +8,37 @@ export const adminPaths = [
     path: 'dashboard',
     element: <AdminDashboard />,
   },
-
   {
-    name: 'User Management',
+    name: 'Products',
     children: [
       {
-        name: 'Create custom order',
-        path: 'create-custom-order',
+        name: 'Add New',
+        path: 'products/add-new',
+        element: <Orders />,
+      },
+    ],
+  },
+  {
+    name: 'Orders',
+    children: [
+      {
+        name: 'Create Custom Order',
+        path: 'orders/create-custom-order',
         element: <Orders />,
       },
       {
-        name: 'Create Admin',
-        path: 'create-admin',
+        name: 'Manage Orders',
+        path: 'orders/manage-orders',
+        element: <Orders />,
+      },
+    ],
+  },
+  {
+    name: 'Customers',
+    children: [
+      {
+        name: 'Add New',
+        path: 'customers/add-new',
         element: <Orders />,
       },
     ],
