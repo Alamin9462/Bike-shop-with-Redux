@@ -10,7 +10,7 @@ import {
   import { RootState } from '../store';
 //   import { logout, setUser } from '../features/auth/authSlice';
 //   import { toast } from 'sonner';
-  
+
   const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:5000/api/v1',
     credentials: 'include',
@@ -68,6 +68,6 @@ import {
   export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: baseQuery,
-   // tagTypes: ['semester', 'courses', 'offeredCourse'],
+   // tagTypes: [],
     endpoints: () => ({}),
   });

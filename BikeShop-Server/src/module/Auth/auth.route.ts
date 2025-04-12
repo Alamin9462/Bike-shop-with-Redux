@@ -12,8 +12,18 @@ router.post(
   AuthControllers.loginUser,
 );
 
-router.post('/register', validateRequest(UserValidation.UserValidationSchema),
-AuthControllers.registationUser
-)
+router.post(
+  '/register',
+  validateRequest(UserValidation.UserValidationSchema),
+  AuthControllers.registationUser,
+);
+
+router.post(
+  '/refresh-token',
+  validateRequest(AuthValidation.RefreshTokenValidationSchema),
+  AuthControllers.refreshToken,
+);
+
+router.post('/logout', AuthControllers.logoutUser);
 
 export const AuthRoutes = router;

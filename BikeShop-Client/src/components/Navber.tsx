@@ -1,13 +1,21 @@
+
 import { NavLink } from "react-router-dom";
+import { logout } from "../redux/features/auth/authSlice";
+import { useAppDispatch } from "../redux/hook";
 
 
 const Navber = () => {
     const link = <>
     <li><NavLink to="/">Home</NavLink></li>
-     <li><NavLink to="all-products">All Products</NavLink></li>
+     <li><NavLink to="all-product">All Products</NavLink></li>
      <li><NavLink to="product/:id">Product Details</NavLink></li>
      <li><NavLink to="about">About</NavLink></li>
      </>
+      const dispatch = useAppDispatch();
+      const handleLogout = () => {
+        dispatch(logout());
+       }
+   
     return (
         <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
@@ -30,7 +38,7 @@ const Navber = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        <button onClick={handleLogout} className="btn btn-outline">Logout</button>
         </div>
       </div>
     );

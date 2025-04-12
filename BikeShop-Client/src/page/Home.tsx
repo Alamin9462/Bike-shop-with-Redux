@@ -1,6 +1,12 @@
+import { NavLink } from "react-router-dom";
 
 
 const Home = () => {
+
+  // const link =<>
+  // <li><NavLink to="/admin">admin</NavLink></li>
+  // <li><NavLink to="/admin/manage-product">All Products</NavLink></li>
+  // </>
     return (
         <div>
             <div className="carousel w-full">
@@ -31,6 +37,11 @@ const Home = () => {
   <a href="#item3" className="btn btn-xs">3</a>
   <a href="#item4" className="btn btn-xs">4</a>
 </div>
+
+
+{/* <div>
+  <li>{link}</li>
+</div> */}
      </div>
     );
 };
