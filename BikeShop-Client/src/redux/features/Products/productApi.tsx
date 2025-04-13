@@ -10,7 +10,15 @@ const productApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+
+    addProduct: builder.mutation({
+      query: (data) => ({
+        url: '/products/create-product',
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllSemestersQuery } = productApi ;
+export const { useGetAllSemestersQuery , useAddProductMutation} = productApi ;

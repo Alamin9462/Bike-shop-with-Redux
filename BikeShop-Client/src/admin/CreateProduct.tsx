@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useAddProductMutation } from "../redux/features/Products/productApi";
 
 const CreateProduct = () => {
+    const [addProduct] = useAddProductMutation;
+    
   const [formData, setFormData] = useState({
     name: "",
     brand: "",
