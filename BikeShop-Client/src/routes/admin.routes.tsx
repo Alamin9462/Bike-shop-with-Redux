@@ -1,5 +1,6 @@
 import AdminDashboard from '../page/admin/AdminDashboard';
 import AddNewBike from '../page/admin/bikes/AddNewBike';
+import AllBikes from '../page/admin/bikes/AllBikes';
 import Orders from '../page/admin/Orders';
 
 // A centralised array for routes and sidebar items (like union)
@@ -20,7 +21,7 @@ export const adminPaths = [
       {
         name: 'All Bikes',
         path: 'all-bikes',
-        element: <Orders />,
+        element: <AllBikes />,
       },
     ],
   },
