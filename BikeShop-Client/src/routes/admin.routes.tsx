@@ -1,4 +1,5 @@
 import AdminDashboard from '../page/admin/AdminDashboard';
+import AddNewBike from '../page/admin/bikes/AddNewBike';
 import Orders from '../page/admin/Orders';
 
 // A centralised array for routes and sidebar items (like union)
@@ -9,11 +10,16 @@ export const adminPaths = [
     element: <AdminDashboard />,
   },
   {
-    name: 'Products',
+    name: 'Bikes',
     children: [
       {
-        name: 'Add New',
-        path: 'products/add-new',
+        name: 'Add New Bike',
+        path: 'add-new-bike',
+        element: <AddNewBike />,
+      },
+      {
+        name: 'All Bikes',
+        path: 'all-bikes',
         element: <Orders />,
       },
     ],
@@ -23,12 +29,12 @@ export const adminPaths = [
     children: [
       {
         name: 'Create Custom Order',
-        path: 'orders/create-custom-order',
+        path: 'create-custom-order',
         element: <Orders />,
       },
       {
         name: 'Manage Orders',
-        path: 'orders/manage-orders',
+        path: 'manage-orders',
         element: <Orders />,
       },
     ],
@@ -37,8 +43,8 @@ export const adminPaths = [
     name: 'Customers',
     children: [
       {
-        name: 'Add New',
-        path: 'customers/add-new',
+        name: 'Add New Customer',
+        path: 'add-new-customer',
         element: <Orders />,
       },
     ],

@@ -15,7 +15,7 @@ type TFormProps = {
   children: ReactNode;
 } & TFormConfig;
 
-const PHForm = ({ onSubmit, children, defaultValues }: TFormProps) => {
+const BSFrom = ({ onSubmit, children, defaultValues }: TFormProps) => {
   const formConfig: TFormConfig = {};
 
   if (defaultValues) {
@@ -31,4 +31,4 @@ const PHForm = ({ onSubmit, children, defaultValues }: TFormProps) => {
   );
 };
 
-export default PHForm;
+export default BSFrom;

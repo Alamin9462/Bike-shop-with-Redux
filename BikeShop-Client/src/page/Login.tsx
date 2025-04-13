@@ -1,13 +1,13 @@
 import { Button, Row } from 'antd';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues } from 'react-hook-form';
 import { useLoginMutation } from '../redux/features/auth/authApi';
 import { useAppDispatch } from '../redux/hooks';
 import { setUser, TUser } from '../redux/features/auth/authSlice';
 import { verifyToken } from '../utils/verifyToken';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import PHForm from '../components/form/PHForm';
-import PHInput from '../components/form/PHInput';
+import BSFrom from '../components/form/BSForm';
+import BSInput from '../components/form/BSInput';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -48,11 +48,11 @@ const Login = () => {
 
   return (
     <Row justify="center" align="middle" style={{ height: '100vh' }}>
-      <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
-        <PHInput type="text" name="email" label="Email: " />
-        <PHInput type="text" name="password" label="Password: " />
+      <BSFrom onSubmit={onSubmit} defaultValues={defaultValues}>
+        <BSInput type="text" name="email" label="Email: " />
+        <BSInput type="text" name="password" label="Password: " />
         <Button htmlType="submit">Login</Button>
-      </PHForm>
+      </BSFrom>
     </Row>
   );
 };

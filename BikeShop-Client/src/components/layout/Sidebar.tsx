@@ -40,7 +40,7 @@ const Sidebar = () => {
           alignItems: 'center',
         }}
       >
-        <h1>Dashboard</h1>
+        <h1>Bike Shop</h1>
       </div>
       <Menu
         theme="dark"
