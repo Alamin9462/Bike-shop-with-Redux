@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home></Home>,
       },
       {
@@ -27,36 +27,38 @@ const router = createBrowserRouter([
         path: "about",
         element: <About></About>,
       },
-
-    //   {
-    //     path: "profile-update",
-        
-    //   }
     ],
   },
+
   {
-    path: "/login",
+    path: "login",
     element: <Login />,
   },
   {
-    path: "/register",
+    path: "register",
     element: <Register />,
   },
   {
     path: "/admin",
-    element: <AdminDashboard></AdminDashboard>,
+    element: <MainLayout />,
     children: [
       {
         path: "",
-        element: <CreateProduct></CreateProduct>,
-      },
-      {
-        path: "manage-user",
-        element: <ManageUsers/>,
-      },
-      {
-        path: "manage-product",
-        element: <ManageProducts/>,
+        element: <AdminDashboard />,
+        children: [
+          {
+            path: "create-product",
+            element: <CreateProduct></CreateProduct>,
+          },
+          {
+            path: "manage-user",
+            element: <ManageUsers />,
+          },
+          {
+            path: "manage-product",
+            element: <ManageProducts />,
+          },
+        ],
       },
     ],
   },

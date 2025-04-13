@@ -1,11 +1,19 @@
-
+import { Outlet } from "react-router-dom";
+import AdminSidebar from "../components/AdminSidebar";
 
 const AdminDashboard = () => {
-    return (
-        <div>
-            <h3>admin panel</h3>
-        </div>
-    );
+  return (
+    <div className="flex h-screen">
+    <div className="w-64">
+      <AdminSidebar />
+      <Outlet />
+    </div>
+    <div className="flex-1 p-6 overflow-y-auto">
+      <Outlet />
+    </div>
+  </div>
+);
 };
+
 
 export default AdminDashboard;

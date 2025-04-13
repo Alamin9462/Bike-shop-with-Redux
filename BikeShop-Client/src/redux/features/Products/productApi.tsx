@@ -4,14 +4,13 @@ import { baseApi } from "../../api/baseApi";
 
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllproducts: builder.query({
+    getAllSemesters: builder.query({
       query: () => ({
         url: '/products',
         method: 'GET',
-        
       }),
     }),
   }),
 });
 
-export const { useGetAllProductsQuery } = productApi;
+export const { useGetAllSemestersQuery } = productApi ;
