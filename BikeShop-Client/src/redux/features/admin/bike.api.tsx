@@ -1,3 +1,5 @@
+import { TResponseRedux } from '../../../types';
+import { TBike } from '../../../types/bike.type';
 import { baseApi } from '../../api/baseApi';
 
 const bikeApi = baseApi.injectEndpoints({
@@ -7,7 +9,7 @@ const bikeApi = baseApi.injectEndpoints({
         url: '/products',
         method: 'GET',
       }),
-      transformResponse: (response) => {
+      transformResponse: (response: TResponseRedux<TBike[]>) => {
         return {
           data: response.data,
         };
