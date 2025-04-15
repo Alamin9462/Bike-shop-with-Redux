@@ -7,6 +7,11 @@ const bikeApi = baseApi.injectEndpoints({
         url: '/products',
         method: 'GET',
       }),
+      transformResponse: (response) => {
+        return {
+          data: response.data,
+        };
+      },
     }),
     addBike: builder.mutation({
       query: (data) => ({
