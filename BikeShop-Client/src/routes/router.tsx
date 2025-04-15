@@ -9,6 +9,7 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 import ManageUsers from "../admin/ManageUsers";
 import ManageProducts from "../admin/ManageProducts";
+import ManageOrders from "../admin/ManageOrders";
 
 const router = createBrowserRouter([
   {
@@ -46,10 +47,7 @@ const router = createBrowserRouter([
         path: "",
         element: <AdminDashboard />,
         children: [
-          {
-            path: "create-product",
-            element: <CreateProduct></CreateProduct>,
-          },
+     
           {
             path: "manage-user",
             element: <ManageUsers />,
@@ -57,6 +55,14 @@ const router = createBrowserRouter([
           {
             path: "manage-product",
             element: <ManageProducts />,
+          },
+          {
+            path: "manage-order",
+            element: <ManageOrders />,
+          },
+          {
+            path: "create-product",
+            element: <CreateProduct></CreateProduct>,
           },
         ],
       },

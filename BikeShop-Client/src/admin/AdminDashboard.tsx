@@ -6,10 +6,9 @@ const AdminDashboard = () => {
     <div className="flex h-screen">
     <div className="w-64">
       <AdminSidebar />
-      <Outlet />
     </div>
     <div className="flex-1 p-6 overflow-y-auto">
-      <Outlet />
+    <Outlet />
     </div>
   </div>
 );
