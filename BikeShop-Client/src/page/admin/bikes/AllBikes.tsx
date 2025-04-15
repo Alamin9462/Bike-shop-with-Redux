@@ -4,11 +4,17 @@ import { TBike } from '../../../types/bike.type';
 
 export type TTableData = Pick<
   TBike,
-  '_id' | 'name' | 'brand' | 'price' | 'model' | 'stock'
+  'name' | 'brand' | 'price' | 'model' | 'stock'
 >;
 
 const AllBikes = () => {
-  const { data: bikeData } = useGetAllBikesQuery(undefined);
+  const {
+    data: bikeData,
+    isLoading,
+    isFetching,
+  } = useGetAllBikesQuery(undefined);
+
+  console.log({ isLoading, isFetching });
 
   const tableData = bikeData?.data?.map(
     ({ _id, name, brand, price, model, stock }) => ({
@@ -80,6 +86,7 @@ const AllBikes = () => {
 
   return (
     <Table<TTableData>
+      loading={isFetching}
       columns={columns}
       dataSource={tableData}
       onChange={onChange}
