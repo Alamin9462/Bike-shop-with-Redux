@@ -1,12 +1,11 @@
 import { Table, TableColumnsType, TableProps } from 'antd';
 import { useGetAllBikesQuery } from '../../../redux/features/admin/bike.api';
+import { TBike } from '../../../types/bike.type';
 
-interface DataType {
-  key: React.Key;
-  name: string;
-  age: number;
-  address: string;
-}
+export type TTableData = Pick<
+  TBike,
+  '_id' | 'name' | 'brand' | 'price' | 'model' | 'stock'
+>;
 
 const AllBikes = () => {
   const { data: bikeData } = useGetAllBikesQuery(undefined);
@@ -22,7 +21,7 @@ const AllBikes = () => {
     })
   );
 
-  const columns: TableColumnsType<DataType> = [
+  const columns: TableColumnsType<TTableData> = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -70,7 +69,7 @@ const AllBikes = () => {
     },
   ];
 
-  const onChange: TableProps<DataType>['onChange'] = (
+  const onChange: TableProps<TTableData>['onChange'] = (
     pagination,
     filters,
     sorter,
@@ -80,7 +79,7 @@ const AllBikes = () => {
   };
 
   return (
-    <Table<DataType>
+    <Table<TTableData>
       columns={columns}
       dataSource={tableData}
       onChange={onChange}
