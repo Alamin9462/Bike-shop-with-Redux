@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../page/Home";
-import AllProduct from "../page/AllProduct";
 import About from "../page/About";
 import AdminDashboard from "../admin/AdminDashboard";
 import CreateProduct from "../admin/CreateProduct";
@@ -10,6 +9,8 @@ import Register from "../page/Register";
 import ManageUsers from "../admin/ManageUsers";
 import ManageProducts from "../admin/ManageProducts";
 import ManageOrders from "../admin/ManageOrders";
+import AllProduct from "../page/AllProduct";
+
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "all-product",
-        element: <AllProduct></AllProduct>,
+        element: <AllProduct/>
       },
       {
         path: "about",

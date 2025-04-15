@@ -1,56 +1,65 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// ViewAllProductTable.tsx
+import { useGetAllSemestersQuery } from "../redux/features/Products/productApi";
 
 const ViewAllProductTable = () => {
-    return (
-        <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Status</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle h-12 w-12">
-                <img
-                  src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                  alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Hart Hagerty</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Zemlak, Daniel and Leannon
-        </td>
-        <td>Purple</td>
-        <th>
-        <td>1500</td>
-        </th>
-        <th>
-        <td>15</td>
-        </th>
-        <th>
-          <td className="btn btn-ghost btn-xs">...</td>
-        </th>
-      </tr>
-    </tbody>
-    {/* foot */}
-  </table>
-</div>
-    );
+  const { data: response, isLoading } = useGetAllSemestersQuery(undefined);
+  const products = response?.data || [];
+
+  if (isLoading) {
+    return <div className="text-center py-10">Loading...</div>;
+  }
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="table w-full">
+        <thead>
+          <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Model</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product: any, index: number) => (
+            <tr key={product._id || index}>
+              <td>
+                <div className="avatar">
+                  <div className="mask mask-squircle w-12 h-12">
+                    <img src={product.photo} alt={product.name} />
+                  </div>
+                </div>
+              </td>
+              <td>{product.name}</td>
+              <td>{product.brand}</td>
+              <td>${product.price}</td>
+              <td>{product.model}</td>
+              <td>{product.stock}</td>
+              <td>
+                <div className="dropdown dropdown-end">
+                  <button tabIndex={0} className="btn btn-ghost btn-xs">
+                    ⋯
+                  </button>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32"
+                  >
+                    <li><button>View</button></li>
+                    <li><button>Edit</button></li>
+                    <li><button className="text-red-500">Delete</button></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default ViewAllProductTable;
