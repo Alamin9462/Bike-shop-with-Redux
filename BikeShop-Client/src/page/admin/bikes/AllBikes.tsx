@@ -73,6 +73,17 @@ const AllBikes = () => {
       title: 'Stock',
       dataIndex: 'stock',
     },
+    {
+      title: 'Action',
+      key: 'x',
+      render: () => {
+        return (
+          <div>
+            <button>Update</button>
+          </div>
+        );
+      },
+    },
   ];
 
   const onChange: TableProps<TTableData>['onChange'] = (
