@@ -26,6 +26,10 @@ const productSchema = new Schema<IProduct>(
       required: [true, 'Stock is required'],
       min: [0, 'Stock cannot be negative'],
     },
+    photo: {
+      type: String,
+      
+    },
   },
   {
     timestamps: true,
