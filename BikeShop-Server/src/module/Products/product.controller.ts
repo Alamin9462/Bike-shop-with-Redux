@@ -20,7 +20,7 @@ const getProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User getting successfully',
+    message: 'Products getting successfully',
     data: result,
   });
 });
@@ -34,7 +34,7 @@ const getSingleProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User getting successfully',
+    message: 'Product getting successfully',
     data: result,
   });
 });
@@ -47,7 +47,7 @@ const updateProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User updated successfully',
+    message: 'Product updated successfully',
     data: result,
   });
 });
@@ -59,7 +59,7 @@ const deleteProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User deleted successfully',
+    message: 'Product deleted successfully',
     data: result,
   });
 });
