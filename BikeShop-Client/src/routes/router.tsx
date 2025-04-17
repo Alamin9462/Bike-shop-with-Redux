@@ -10,6 +10,8 @@ import ManageUsers from "../admin/ManageUsers";
 import ManageProducts from "../admin/ManageProducts";
 import ManageOrders from "../admin/ManageOrders";
 import AllProduct from "../page/AllProduct";
+import Cart from "../page/Cart";
+import Profile from "../page/Profile";
 
 
 const router = createBrowserRouter([
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About></About>,
+      },
+      {
+        path: "cart",
+        element: <Cart></Cart>,
+      },
+      {
+        path: "profile",
+        element: <Profile></Profile>,
       },
     ],
   },

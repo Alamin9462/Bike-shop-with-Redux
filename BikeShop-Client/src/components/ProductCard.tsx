@@ -1,12 +1,32 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addToCart } from "../redux/features/cart/cartSlice";
+
 interface ProductCardProps {
+  id: string;
   name: string;
   brand: string;
   price: number;
   photo: string;
+  quantity: number;
 }
 
-const ProductCard = ({ name, brand, price, photo }: ProductCardProps) => {
-    return (
+const ProductCard = ({ id ,name, brand, price, photo }: ProductCardProps) => {
+    
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({
+      productId: id,
+      name: name,
+      price: price,
+      quantity: 0,
+    }));
+    navigate("/cart");
+  };
+  
+  return (
         <div className="card w-full bg-base-100 shadow-xl">
              <figure>
                <img src={photo} alt={name} className="h-48 w-full object-cover" />
@@ -16,7 +36,7 @@ const ProductCard = ({ name, brand, price, photo }: ProductCardProps) => {
                <p className="text-sm text-gray-500">{brand}</p>
                <p className="text-lg font-semibold text-primary">${price}</p>
                <div className="card-actions justify-center gap-x-2">
-                 <button className="btn btn-primary btn-sm">Add to Cart</button>
+                 <button onClick={handleAddToCart} className="btn btn-primary btn-sm">Add to Cart</button>
                  <button className="btn btn-primary btn-sm">Details</button>
                </div>
              </div>

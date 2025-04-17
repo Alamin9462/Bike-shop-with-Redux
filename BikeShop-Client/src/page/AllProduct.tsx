@@ -34,7 +34,7 @@ const AllProduct = () => {
               brand={product.brand}
               price={product.price}
               photo={product.photo}
-            />
+              id={""} quantity={1}/>
           ))
         ) : (
           <p className="text-center col-span-3">No products found.</p>
