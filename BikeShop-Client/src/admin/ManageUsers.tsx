@@ -1,4 +1,4 @@
-import ViewAllProductTable from "../components/ViewAllProductTable";
+// import ViewAllProductTable from "../components/ViewAllProductTable";
 
 
 const ManageUsers = () => {

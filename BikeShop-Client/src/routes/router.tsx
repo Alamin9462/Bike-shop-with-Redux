@@ -42,31 +42,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <MainLayout />,
+    element: <AdminDashboard />,
     children: [
-      {
-        path: "",
-        element: <AdminDashboard />,
-        children: [
-     
-          {
-            path: "manage-user",
-            element: <ManageUsers />,
-          },
-          {
-            path: "manage-product",
-            element: <ManageProducts />,
-          },
-          {
-            path: "manage-order",
-            element: <ManageOrders />,
-          },
-          {
-            path: "create-product",
-            element: <CreateProduct></CreateProduct>,
-          },
-        ],
-      },
+
+        
+        {
+          path: "manage-user",
+          element: <ManageUsers />,
+        },
+        {
+          path: "manage-product",
+          element: <ManageProducts />,
+        },
+        {
+          path: "manage-order",
+          element: <ManageOrders />,
+        },
+        {
+          path: "create-product",
+          element: <CreateProduct></CreateProduct>,
+        },
+      
     ],
   },
 ]);

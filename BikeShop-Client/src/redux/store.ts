@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './features/auth/authSlice';
+import searchReducer from './features/search/searchSlice';
 
 import {
   persistReducer,
@@ -25,6 +26,8 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
+    search: searchReducer,
+ 
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares({
