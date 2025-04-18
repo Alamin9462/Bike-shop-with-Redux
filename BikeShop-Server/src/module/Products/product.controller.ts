@@ -14,13 +14,12 @@ const createProduct = catchAsync(async (req, res) => {
   });
 });
 const getProduct = catchAsync(async (req, res) => {
-  console.log('test: ', req.user);
-  const result = await ProductService.getProductToDB();
+  const result = await ProductService.getProductToDB(req.query);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User getting successfully',
+    message: 'Product getting successfully',
     data: result,
   });
 });

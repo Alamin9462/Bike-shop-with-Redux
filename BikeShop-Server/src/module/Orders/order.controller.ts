@@ -11,11 +11,24 @@ const createOrder = catchAsync(async (req, res) => {
     sendResponse(res,{
         statusCode: httpStatus.OK,
         success: true,
-        message: "Product created successfully",
+        message: "Your order successfully",
+        data: result,
+    })
+})
+
+
+const getOrder = catchAsync(async (req, res) => {
+    const result = await OrderService.getOrder();
+    
+    sendResponse(res,{
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Getting order successfully",
         data: result,
     })
 })
 
 export const OrderController = {
-    createOrder
+    createOrder,
+    getOrder
 }

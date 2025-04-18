@@ -123,7 +123,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     }
 
 
-   console.log(decoded);
+   //console.log(decoded);
 
     const { role, email, iat } = decoded;
 

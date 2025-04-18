@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import { IOrder } from './order.interface';
 
 const orderSchema = new Schema<IOrder>(
@@ -21,13 +21,13 @@ const orderSchema = new Schema<IOrder>(
 
     totalPrice: {
       type: Number,
-      required: true,
+      required: false,
       min: 0,
     },
     productStatus: {
       type: String,
       enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'],
-      default: 'pending',
+      default: 'processing',
     },
   },
   {
@@ -38,3 +38,4 @@ const orderSchema = new Schema<IOrder>(
 const OrderModel = model<IOrder>('Order', orderSchema);
 
 export default OrderModel;
+
