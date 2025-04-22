@@ -12,6 +12,8 @@ import ManageOrders from "../admin/ManageOrders";
 import AllProduct from "../page/AllProduct";
 import Cart from "../page/Cart";
 import Profile from "../page/Profile";
+import ProtectedRoute from "../layout/ProtectedRoute";
+import AdminProtectedRoute from "../layout/AdminProtectedRoute";
 
 
 const router = createBrowserRouter([
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home></Home>,
+        element: <ProtectedRoute><Home></Home></ProtectedRoute>,
       },
       {
         path: "all-product",
@@ -52,7 +54,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminDashboard />,
+    element: <AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>,
     children: [
 
         

@@ -33,6 +33,7 @@ const Login = () => {
           password: data.password,
         };
         const res = await login(userInfo).unwrap();
+        console.log("response: ", res);
   
         const user = verifyToken(res.data.accessToken) as TUser;
 

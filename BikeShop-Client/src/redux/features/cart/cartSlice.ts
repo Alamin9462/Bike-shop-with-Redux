@@ -6,16 +6,26 @@ interface CartItem {
   name: string;
   price: number;
   quantity: number;
+  stock: number;
+  brand: string;
+  imageUrl: string;
+
 }
 
 interface CartState {
   items: CartItem[];
+  totalQuantity : number;
+  totalPrice : number;
 }
+
+
 
 const savedCart = localStorage.getItem("cartItems");
 
 const initialState: CartState = {
   items: savedCart ? JSON.parse(savedCart) : [],
+  totalQuantity: 0,
+  totalPrice: 0
 };
 
 const cartSlice = createSlice({
@@ -29,6 +39,9 @@ const cartSlice = createSlice({
       } else {
         state.items.push(action.payload);
       }
+
+      state.totalQuantity += action.payload.quantity;
+      state.totalPrice += action.payload.price * action.payload.quantity;
       localStorage.setItem("cartItems", JSON.stringify(state.items));
 
     },
@@ -54,11 +67,13 @@ const cartSlice = createSlice({
       const item = state.items.find(item => item.productId === action.payload.productId);
       if (item) {
         item.quantity = action.payload.quantity;
-        localStorage.setItem("cartItems", JSON.stringify(state.items));
+        // localStorage.setItem("cartItems", JSON.stringify(state.items));
       }
     },
     clearCart: state => {
       state.items = [];
+      state.totalQuantity = 0;
+      state.totalPrice = 0;
       localStorage.removeItem("cartItems");
     },
   },

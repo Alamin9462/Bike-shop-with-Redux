@@ -29,12 +29,7 @@ const AllProduct = () => {
         {filtered.length > 0 ? (
           filtered.map((product: any) => (
             <ProductCard
-              key={product._id}
-              name={product.name}
-              brand={product.brand}
-              price={product.price}
-              photo={product.photo}
-              id={""} quantity={1}/>
+             key={product._id} product={product}/>
           ))
         ) : (
           <p className="text-center col-span-3">No products found.</p>
