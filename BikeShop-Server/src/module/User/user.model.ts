@@ -37,6 +37,9 @@ const userSchema = new Schema<IUser>(
     photo: {
       type: String,
     },
+    phone: { type: String, default: 'N/A' },
+    address: { type: String, default: 'N/A' },
+    city: { type: String, default: 'N/A' },
 
     role: {
       type: String,

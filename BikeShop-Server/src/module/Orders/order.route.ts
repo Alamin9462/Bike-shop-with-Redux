@@ -1,12 +1,18 @@
-import express from 'express';
+import express, { Router } from 'express';
 
 import { OrderController } from './order.controller';
-// import { createOrder, getOrdersByUser } from './order.controller';
+import auth from '../../app/middlewares/auth';
+import { USER_ROLE } from '../User/user.constant';
 
-const router = express.Router();
+const orderRouter = Router();
 
-router.post('/create-order', OrderController.createOrder);
-router.get('/', OrderController.getOrder ); // Get orders by user ID
+//  orderRouter.post("/create-order", auth(USER_ROLE.customer), OrderController.createOrder);
 
-export const OrderRoutes = router;
- 
+ orderRouter.get("/verify", auth(USER_ROLE.customer), OrderController.verifyPayment);
+
+ orderRouter
+   .route("/")
+   .post(auth(USER_ROLE.customer), OrderController.createOrder)
+   .get(auth(USER_ROLE.customer), OrderController.getOrder);
+   
+  export default orderRouter;

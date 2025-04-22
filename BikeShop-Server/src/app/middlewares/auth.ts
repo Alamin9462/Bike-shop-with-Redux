@@ -123,7 +123,6 @@ const auth = (...requiredRoles: TUserRole[]) => {
     }
 
 
-   //console.log(decoded);
 
     const { role, email, iat } = decoded;
 
@@ -131,6 +130,13 @@ const auth = (...requiredRoles: TUserRole[]) => {
 
     if (!user) {
       throw new AppError(httpStatus.NOT_FOUND, 'This user is not found!');
+    }
+
+    if (requiredRoles && !requiredRoles.includes(role)) {
+      throw new AppError(
+        httpStatus.UNAUTHORIZED,
+        "You are not authorized  hi!"
+      );
     }
 
     // if (user.isDeleted) {
@@ -152,7 +158,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
       throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
     }
 
-    req.user = decoded as JwtPayload;
+    req.user = user;
     next();
   });
 };

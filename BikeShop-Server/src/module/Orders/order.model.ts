@@ -8,11 +8,20 @@ const orderSchema = new Schema<IOrder>(
       ref: 'User',
       required: true,
     },
-    products: {
-      type: Schema.Types.ObjectId,
-      ref: 'Product',
-      required: true,
-    },
+    products: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          min: [1, 'Quantity must be at least 1'],
+        },
+      },
+    ],
     quantity: {
       type: Number,
       required: true,
@@ -29,6 +38,15 @@ const orderSchema = new Schema<IOrder>(
       enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'],
       default: 'processing',
     },
+    transaction: {
+      id: String,
+      transactionStatus: String,
+      bank_status: String,
+      sp_code: String,
+      sp_message: String,
+      method: String,
+      date_time: String,
+    },
   },
   {
     timestamps: true,
@@ -38,4 +56,3 @@ const orderSchema = new Schema<IOrder>(
 const OrderModel = model<IOrder>('Order', orderSchema);
 
 export default OrderModel;
-
