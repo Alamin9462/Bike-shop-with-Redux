@@ -1,10 +1,31 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // ViewAllProductTable.tsx
-import { useGetAllSemestersQuery } from "../redux/features/Products/productApi";
+import { useState } from "react";
+import { toast } from "sonner";
+import {
+  useDeletedProductMutation,
+  useGetAllSemestersQuery,
+} from "../redux/features/Products/productApi";
+import ProductEditForm from "../components/ProductEditForm";
 
 const ViewAllProductTable = () => {
   const { data: response, isLoading } = useGetAllSemestersQuery(undefined);
   const products = response?.data || [];
+  const [deleteProduct] = useDeletedProductMutation();
+
+  const [editingProduct, setEditingProduct] = useState<any>(null);
+
+  const handleDeleteItem = async (_id: string) => {
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      try {
+        await deleteProduct(_id).unwrap();
+        toast.success("Product deleted successfully");
+      } catch (err) {
+        toast.error("Failed to delete product");
+      }
+    }
+  };
 
   if (isLoading) {
     return <div className="text-center py-10">Loading...</div>;
@@ -12,6 +33,12 @@ const ViewAllProductTable = () => {
 
   return (
     <div className="overflow-x-auto">
+      {editingProduct && (
+        <ProductEditForm
+          product={editingProduct}
+          onClose={() => setEditingProduct(null)}
+        />
+      )}
       <table className="table w-full">
         <thead>
           <tr>
@@ -48,9 +75,19 @@ const ViewAllProductTable = () => {
                     tabIndex={0}
                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32"
                   >
-                    <li><button>View</button></li>
-                    <li><button>Edit</button></li>
-                    <li><button className="text-red-500">Delete</button></li>
+                    <li>
+                      <button onClick={() => setEditingProduct(product)}>
+                        Edit
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="text-red-500"
+                        onClick={() => handleDeleteItem(product._id)}
+                      >
+                        Delete
+                      </button>
+                    </li>
                   </ul>
                 </div>
               </td>

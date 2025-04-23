@@ -43,8 +43,8 @@ const Navber = () => {
 
       <div className="navbar-end flex items-center gap-4 mr-2">
   
-        <NavLink to="/cart" className="btn btn-ghost">
-          <ShoppingCartIcon className="h-6 w-6" />
+        <NavLink to="/cart" className="btn btn-ghost ">
+          <ShoppingCartIcon className="h-6 w-6 text-purple-500 from-indigo-500 to-green-500" />
         </NavLink>
 
   

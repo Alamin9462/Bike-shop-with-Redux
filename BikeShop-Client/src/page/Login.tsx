@@ -12,17 +12,8 @@ const Login = () => {
     const dispatch = useAppDispatch();
     const [login] = useLoginMutation();
     
-   // const [login, {data, error}] = useLoginMutation();
-    // console.log("data: ", data );
-    // console.log("data: ", error );
 
-    const { register, handleSubmit } = useForm({
-      defaultValues:{
-        email: "rakib@example.com",
-        password: "rakib123"
-
-      }
-    });
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = async (data: FieldValues) => {
       const toastId = toast.loading('Logging in');
@@ -43,7 +34,11 @@ const Login = () => {
         if (res.data.needsPasswordChange) {
           navigate(`/change-password`);
         } else {
-          navigate(`/`);
+          if(user.role === "admin"){
+            navigate('/admin')
+          } else if (user.role === 'customer'){
+            navigate('/')
+          }
         }
         
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -14,6 +14,8 @@ import Cart from "../page/Cart";
 import Profile from "../page/Profile";
 import ProtectedRoute from "../layout/ProtectedRoute";
 import AdminProtectedRoute from "../layout/AdminProtectedRoute";
+import MyOrder from "../page/MyOrder";
+import ProductDetails from "../page/ProductDetails";
 
 
 const router = createBrowserRouter([
@@ -36,11 +38,20 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart></Cart>,
+      }, 
+      {
+        path: "orders",
+        element: <MyOrder></MyOrder>,
       },
       {
         path: "profile",
         element: <Profile></Profile>,
+    
       },
+      {
+        path: "products/:id",
+        element: <ProductDetails/>,
+      }
     ],
   },
 

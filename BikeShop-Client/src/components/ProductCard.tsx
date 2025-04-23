@@ -43,7 +43,7 @@ export function ProductCard ({product}: {product: ProductCardProps}) {
                <p className="text-lg font-semibold text-primary">${product.price}</p>
                <div className="card-actions justify-center gap-x-2">
                  <button onClick={handleAddToCart} className="btn btn-primary btn-sm">Add to Cart</button>
-                 <button className="btn btn-primary btn-sm">Details</button>
+                 <button onClick={() => navigate(`/products/${product._id}`)} className="btn btn-primary btn-sm">Details</button>
                </div>
              </div>
            </div>
