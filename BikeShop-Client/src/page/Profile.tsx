@@ -3,7 +3,7 @@
 const Profile = () => {
     return (
         <div>
-            <p>this is profile section</p>
+            <h3>this is profile section</h3>
         </div>
     );
 };
