@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   UserCircleIcon,
   PencilSquareIcon,
@@ -6,8 +7,9 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { logout } from "../redux/features/auth/authSlice";
-import { useAppDispatch } from "../redux/hook";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 type Props = {
   onClose: () => void;
@@ -15,6 +17,8 @@ type Props = {
 
 const ProfileDropdownModal = ({ onClose }: Props) => {
   const dispatch = useAppDispatch();
+
+  const user = useAppSelector((state : any) => state.auth.user);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -34,24 +38,29 @@ const ProfileDropdownModal = ({ onClose }: Props) => {
       {/* Profile Info */}
       <div className="flex flex-col items-center">
         <UserCircleIcon className="w-20 h-20 text-indigo-500 dark:text-indigo-400" />
-        <h2 className="text-lg font-semibold mt-1">John Doe</h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400">johndoe@email.com</p>
+        <h2 className="text-lg font-semibold mt-1">{user?.name || "John Doe"}</h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email || "demo@example.com"}
+        </p>
       </div>
 
       {/* Menu */}
       <ul className="space-y-3 pt-2">
-        <li className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
-          <PencilSquareIcon className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-          <span>Edit Profile</span>
-        </li>
+        <Link to="/profile">
+          <li className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+            <PencilSquareIcon className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+            <span>Edit Profile</span>
+          </li>
+        </Link>
         <li className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
           <KeyIcon className="w-5 h-5 text-orange-500 dark:text-orange-400" />
           <span>Change Password</span>
         </li>
-        <li className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
-          <ShoppingBagIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
-          <span>My Orders</span>
-        </li>
+        <Link to="/orders">
+          <li className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+            <ShoppingBagIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
+            <span>My Orders</span>
+          </li>
+        </Link>
         <li
           onClick={handleLogout}
           className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"

@@ -1,9 +1,10 @@
+import ViewAllOrdersTable from "../components/viewAllOrderTable";
 
 
 const ManageOrders = () => {
     return (
         <div>
-            <h3>this is manageORder</h3>
+            <ViewAllOrdersTable/>
         </div>
     );
 };

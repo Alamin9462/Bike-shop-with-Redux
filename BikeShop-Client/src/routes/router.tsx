@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <Cart></Cart>,
+        element: <ProtectedRoute><Cart></Cart></ProtectedRoute>,
       }, 
       {
         path: "orders",

@@ -35,7 +35,8 @@ import {
   
     if (result?.error?.status === 401) {
       // Sending refresh token
-      toast.error(result?.error?.data?.message);
+      toast.error((result?.error?.data as { message?: string })?.message);
+
       //toast.error("user not found");
     }
     if (result?.error?.status === 401) {
