@@ -37,17 +37,20 @@ const getProductToDB = async (filters: any) => {
 };
 
 const getSingleProductToDB = async (id: string) => {
-  const result = await ProductModel.findOne({ id });
+  console.log("Searching for id:", id);
+  const result = await ProductModel.findById(id);
+  console.log("Result:", result);
   return result;
 };
 
+
 const updateProductToDB = async (id: string, payload: Partial<IProduct>) => {
-  const result = await ProductModel.findOneAndUpdate({ id }, payload);
+  const result = await ProductModel.findByIdAndUpdate( id , payload);
   return result;
 };
 
 const deleteProductToDB = async (id: string) => {
-  const result = await ProductModel.findOneAndDelete({ id });
+  const result = await ProductModel.findByIdAndDelete(id);
   return result;
 };
 

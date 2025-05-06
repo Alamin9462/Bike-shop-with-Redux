@@ -148,8 +148,8 @@ const changePassword = async (
 
   //checking if the password is correct
 
-  if (!(await UserModel.findOne(payload?.oldPassword, user?.password)))
-    throw new AppError(httpStatus.FORBIDDEN, 'Password do not matched');
+  // if (!(await UserModel.findOne(payload?.oldPassword, user?.password)))
+  //   throw new AppError(httpStatus.FORBIDDEN, 'Password do not matched');
 
   // hash new password
   const newHashedPassword = await bcrypt.hash(

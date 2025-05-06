@@ -30,6 +30,14 @@ const productSchema = new Schema<IProduct>(
       type: String,
       
     },
+    photo1: {
+      type: String,
+      
+    },
+    photo2: {
+      type: String,
+      
+    },
   },
   {
     timestamps: true,

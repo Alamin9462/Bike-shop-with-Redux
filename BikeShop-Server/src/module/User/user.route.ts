@@ -9,6 +9,7 @@ router.post('/create-user', UserController.createUSer);
 router.get('/:userId', UserController.getSingleUser);
 router.delete('/:userId', UserController.deleteUser);
 router.put('/:userId', UserController.updateUser);
-router.get ('/', auth(USER_ROLE.admin,), UserController.getUser);
+ router.get ('/', auth(USER_ROLE.admin,), UserController.getUser);
+
 
 export const UserRouters = router;

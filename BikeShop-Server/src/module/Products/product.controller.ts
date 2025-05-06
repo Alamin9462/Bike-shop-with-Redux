@@ -13,6 +13,7 @@ const createProduct = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
 const getProduct = catchAsync(async (req, res) => {
   const result = await ProductService.getProductToDB(req.query);
 
@@ -26,39 +27,38 @@ const getProduct = catchAsync(async (req, res) => {
 
 const getSingleProduct = catchAsync(async (req, res) => {
   console.log(req.params);
-  const productId = req.params.productId;
-
+  const productId = req.params.product;  // ✅ replaced
   const result = await ProductService.getSingleProductToDB(productId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User getting successfully',
+    message: 'Product getting successfully',
     data: result,
   });
 });
 
 const updateProduct = catchAsync(async (req, res) => {
-  const productId = req.params.productId;
+  const productId = req.params.product; 
   const body = req.body;
   const result = await ProductService.updateProductToDB(productId, body);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User updated successfully',
+    message: 'Product updated successfully',
     data: result,
   });
 });
 
 const deleteProduct = catchAsync(async (req, res) => {
-  const { productId } = req.params;
+  const productId = req.params.product;  
   const result = await ProductService.deleteProductToDB(productId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User deleted successfully',
+    message: 'Product deleted successfully',
     data: result,
   });
 });
