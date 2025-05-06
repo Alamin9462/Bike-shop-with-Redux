@@ -1,4 +1,4 @@
-import ViewAllOrdersTable from "../components/viewAllOrderTable";
+import ViewAllOrdersTable from "../components/ViewAllOrderTable";
 
 
 const ManageOrders = () => {

@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <ProtectedRoute><Home></Home></ProtectedRoute>,
+        element: <Home></Home>
       },
       {
         path: "all-product",

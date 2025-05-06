@@ -12,6 +12,8 @@ type TProduct = {
   model: string;
   stock: number;
   photo: string;
+  photo1: string;
+  photo2: string;
 };
 
 type Props = {
@@ -33,6 +35,7 @@ const ProductEditForm = ({ product, onClose }: Props) => {
     try {
       await updateProduct({ id: product._id, data: formData }).unwrap();
       toast.success("Product updated successfully");
+      
       onClose();
     } catch (err) {
       toast.error("Failed to update product");
@@ -50,6 +53,8 @@ const ProductEditForm = ({ product, onClose }: Props) => {
           <input className="input input-bordered w-full" name="model" value={formData.model} onChange={handleChange} placeholder="Model" />
           <input className="input input-bordered w-full" name="stock" type="number" value={formData.stock} onChange={handleChange} placeholder="Stock" />
           <input className="input input-bordered w-full" name="photo" value={formData.photo} onChange={handleChange} placeholder="Photo URL" />
+          <input className="input input-bordered w-full" name="photo1" value={formData.photo1} onChange={handleChange} placeholder="Photo URL" />
+          <input className="input input-bordered w-full" name="photo2" value={formData.photo2} onChange={handleChange} placeholder="Photo URL" />
           <div className="flex justify-end space-x-2">
             <button type="button" onClick={onClose} className="btn btn-secondary">Cancel</button>
             <button type="submit" className="btn btn-primary">Update</button>

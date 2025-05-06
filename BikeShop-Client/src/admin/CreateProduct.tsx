@@ -14,6 +14,8 @@ const CreateProduct = () => {
       model: "",
       stock: "",
       photo: "",
+      photo1: "",
+      photo2: "",
     },
   });
 
@@ -25,12 +27,14 @@ const CreateProduct = () => {
         price: data.price,
         model: data.model,
         stock: data.stock,
-        photo: data.photo,
+        photo: data.photo,  
+        photo1: data.photo1, 
+        photo2: data.photo2, 
       };
 
       const result = await addProduct(productData).unwrap();
       toast.success("Product added successfully!");
-      reset();
+      reset();  // Reset the form after submission
       console.log(result);
     } catch (error: any) {
       toast.error(error?.data?.message || "Something went wrong!");
@@ -99,14 +103,38 @@ const CreateProduct = () => {
           />
         </div>
 
+        {/* Main Photo URL */}
         <div>
-          <label className="block mb-1 font-medium">Photo URL</label>
+          <label className="block mb-1 font-medium">Photo URL 1</label>
           <input
             type="text"
             placeholder="https://example.com/image.jpg"
             {...product("photo")}
             className="w-full px-3 py-2 border rounded-md"
             required
+          />
+        </div>
+
+        {/* Secondary Photo URL */}
+        <div>
+          <label className="block mb-1 font-medium">Photo URL 2</label>
+          <input
+            type="text"
+            placeholder="https://example.com/image.jpg"
+            {...product("photo1")}
+            className="w-full px-3 py-2 border rounded-md"
+            required
+          />
+        </div>
+
+        {/* Tertiary Photo URL */}
+        <div>
+          <label className="block mb-1 font-medium">Photo URL 3</label>
+          <input
+            type="text"
+            placeholder="https://example.com/image.jpg"
+            {...product("photo2")}
+            className="w-full px-3 py-2 border rounded-md"
           />
         </div>
 

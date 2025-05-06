@@ -42,7 +42,8 @@ const ViewAllProductTable = () => {
       <table className="table w-full">
         <thead>
           <tr>
-            <th>Photo</th>
+           
+            <th> Photo</th>
             <th>Name</th>
             <th>Brand</th>
             <th>Price</th>
