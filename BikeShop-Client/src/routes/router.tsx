@@ -16,6 +16,7 @@ import ProtectedRoute from "../layout/ProtectedRoute";
 import AdminProtectedRoute from "../layout/AdminProtectedRoute";
 import MyOrder from "../page/MyOrder";
 import ProductDetails from "../page/ProductDetails";
+import Contact from "../page/Contact";
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "products/:id",
         element: <ProductDetails/>,
+      },
+      {
+        path: "contact",
+        element: <Contact/>,
       }
     ],
   },

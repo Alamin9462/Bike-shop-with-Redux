@@ -19,6 +19,7 @@ const ProfileDropdownModal = ({ onClose }: Props) => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector((state : any) => state.auth.user);
+  console.log(user);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -38,6 +39,7 @@ const ProfileDropdownModal = ({ onClose }: Props) => {
       {/* Profile Info */}
       <div className="flex flex-col items-center">
         <UserCircleIcon className="w-20 h-20 text-indigo-500 dark:text-indigo-400" />
+
         <h2 className="text-lg font-semibold mt-1">{user?.name || "John Doe"}</h2>
         <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email || "demo@example.com"}
         </p>

@@ -69,7 +69,7 @@ const AllProduct = () => {
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 mt-10">
         {/* Sidebar */}
-        <AllProductSidebar onApplyFilters={function (filters: { price: number; brand: string; rating: number; }): void {
+        <AllProductSidebar onApplyFilters={function (): void {
           throw new Error("Function not implemented.");
         } } />
 
