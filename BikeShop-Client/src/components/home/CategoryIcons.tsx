@@ -26,8 +26,8 @@ const categories = [
 
 const CategoryIcons = () => {
   return (
-    <div className="py-12 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      <h2 className="text-4xl font-bold text-gray-800 mb-4 text-center">
+    <div className="py-8 bg-gradient-to-br from-gray-50 via-white to-gray-100">
+      <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
         Explore Our <span className="bg-gradient-to-r from-yellow-500 to-teal-400 text-transparent bg-clip-text">
           Categories
         </span>
@@ -36,7 +36,7 @@ const CategoryIcons = () => {
         {categories.map((category, index) => (
           <div
             key={index}
-            className="group bg-white hover:bg-indigo-600 hover:text-white text-gray-700 rounded-2xl p-6 shadow-md flex flex-col items-center transition duration-300 ease-in-out relative overflow-hidden"
+            className="group my-5 bg-white hover:bg-indigo-600 hover:text-white text-gray-700 rounded-2xl p-6 shadow-md flex flex-col items-center transition duration-300 ease-in-out relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-20 h-20 bg-indigo-100 opacity-30 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
             <div className="mb-3 bg-indigo-100 group-hover:bg-white text-indigo-600 group-hover:text-indigo-800 p-3 rounded-full shadow-lg transition-all duration-300">

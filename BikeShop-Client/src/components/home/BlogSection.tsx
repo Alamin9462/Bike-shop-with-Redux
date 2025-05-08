@@ -2,9 +2,9 @@ import { NewspaperIcon } from "@heroicons/react/24/solid";
 
 const BlogSection = () => {
   return (
-    <section className="py-16 bg-gradient-to-r from-gray-100 via-white to-gray-200">
+    <section className="py-8 bg-gradient-to-r from-gray-100 via-white to-gray-200">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">
           Latest <span className="bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text">Blog Posts</span>
         </h2>
         <p className="text-lg text-gray-600">
@@ -13,7 +13,7 @@ const BlogSection = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-        <div className="bg-white rounded-xl shadow-xl overflow-hidden hover:scale-105 transform transition duration-300 ease-in-out">
+        <div className="bg-white rounded-xl shadow-xl  overflow-hidden hover:scale-105 transform transition duration-300 ease-in-out">
           <img
             src="https://cdn.pixabay.com/photo/2016/04/07/06/53/bmw-1313343_1280.jpg"
             alt="blog1"

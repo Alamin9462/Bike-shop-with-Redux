@@ -9,10 +9,10 @@ const HomeProducts = () => {
   if (isLoading) return <div className="text-center py-10">Loading...</div>
 
   return (
-    <div className="py-10 bg-gray-100">
+    <div className="py-8 bg-gray-100">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
         Featured{" "}
-        <span className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 text-transparent bg-clip-text">
+        <span className="bg-gradient-to-r from-yellow-500 to-teal-400 text-transparent bg-clip-text">
           Bikes
         </span>
       </h2>

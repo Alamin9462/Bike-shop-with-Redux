@@ -23,9 +23,9 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="bg-gradient-to-br from-gray-100 to-white py-16">
+    <section className="bg-gradient-to-br from-gray-100 to-white py-8">
       <div className="max-w-6xl mx-auto px-6 text-center">
-      <h2 className="text-4xl font-bold text-gray-800 mb-4 text-center">
+      <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
       What Our <span className="bg-gradient-to-r from-yellow-500 to-teal-400 text-transparent bg-clip-text">
       Customers Say
         </span>
@@ -34,7 +34,7 @@ const TestimonialSection = () => {
           {testimonials.map((testimonial, idx) => (
             <div
               key={idx}
-              className="p-6 bg-white shadow-xl rounded-2xl hover:scale-[1.03] transition-transform duration-300"
+              className="p-6 my-5 bg-white shadow-xl rounded-2xl hover:scale-[1.03] transition-transform duration-300"
             >
               <UserCircleIcon className="h-12 w-12 text-blue-500 mx-auto mb-4" />
               <p className="text-gray-700 italic mb-4">"{testimonial.feedback}"</p>
