@@ -17,6 +17,7 @@ import AdminProtectedRoute from "../layout/AdminProtectedRoute";
 import MyOrder from "../page/MyOrder";
 import ProductDetails from "../page/ProductDetails";
 import Contact from "../page/Contact";
+import FAQPage from "../page/FAQPage";
 
 
 const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact/>,
+      },
+      {
+        path: "faq",
+        element: <FAQPage/>,
       }
     ],
   },
