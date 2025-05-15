@@ -37,11 +37,11 @@ BikeStore is a full-featured eCommerce platform for browsing, searching, and pur
 - 💳 Integrated with ShurjoPay for Online Payments  
 - 🔎 Advanced Search & Filter Functionality
 
-## Credential : 
-# Admin: 
+# Credential : 
+## Admin: 
 - email: admin@example.com
 - pass: admin123
-# User: 
+## User: 
 - email: porosh@example.com
 - pass: porosh123
 
