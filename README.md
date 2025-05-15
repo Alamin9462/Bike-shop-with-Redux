@@ -6,7 +6,6 @@ BikeStore is a full-featured eCommerce platform for browsing, searching, and pur
 
 
 
-
  
 
 ## 🔧 Tech Stack
@@ -30,12 +29,20 @@ BikeStore is a full-featured eCommerce platform for browsing, searching, and pur
 **Server:** Node, Express, Mongoose
 
 ## 📌 Features
+
 **🔗 Live Demo:** [GearGo.com](https://bike-shop-client-kb3qhe9mm-md-alamins-projects-de5ed92d.vercel.app/)
 - 🔐 JWT-based Authentication & Authorization  
 - 🧑‍💼 Role-based Dashboards (Admin & Customer)  
 - 🛍 Product Management (Add, Edit, Delete, View)  
 - 💳 Integrated with ShurjoPay for Online Payments  
 - 🔎 Advanced Search & Filter Functionality
+
+## Credential : 
+Admin: 
+email: admin@example.com
+pass: admin123
+User: porosh@example.com
+pass: porosh123
 
 ## 🔐 Environment Variables
 
