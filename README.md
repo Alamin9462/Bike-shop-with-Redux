@@ -38,11 +38,12 @@ BikeStore is a full-featured eCommerce platform for browsing, searching, and pur
 - 🔎 Advanced Search & Filter Functionality
 
 ## Credential : 
-Admin: 
-email: admin@example.com
-pass: admin123
-User: porosh@example.com
-pass: porosh123
+# Admin: 
+- email: admin@example.com
+- pass: admin123
+# User: 
+- email: porosh@example.com
+- pass: porosh123
 
 ## 🔐 Environment Variables
 
