@@ -13,6 +13,6 @@ const orderRouter = Router();
  orderRouter
    .route("/")
    .post(auth(USER_ROLE.customer), OrderController.createOrder)
-   .get(auth(USER_ROLE.customer), OrderController.getOrder);
+   .get( OrderController.getOrder);
    
   export default orderRouter;

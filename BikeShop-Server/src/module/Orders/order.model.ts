@@ -1,6 +1,7 @@
 import mongoose, { Schema, model } from 'mongoose';
 import { IOrder } from './order.interface';
 
+
 const orderSchema = new Schema<IOrder>(
   {
     user: {
@@ -9,7 +10,7 @@ const orderSchema = new Schema<IOrder>(
       required: true,
     },
     products: [
-      {
+      {     
         product: {
           type: Schema.Types.ObjectId,
           ref: "Product",

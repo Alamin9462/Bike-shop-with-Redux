@@ -24,6 +24,7 @@ export interface IOrder {
     products : {
       product: mongoose.Schema.Types.ObjectId;
       quantity: number;
+      
     }[];
     quantity : number;
     totalPrice ?: number;
