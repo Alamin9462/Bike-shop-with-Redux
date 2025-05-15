@@ -3,7 +3,8 @@ import AdminSidebar from "../components/AdminSidebar";
 
 const AdminDashboard = () => {
   return (
-    <div className="flex h-screen">
+    <div className="flex max-w-7xl h-screen mx-auto">
+      
     <div className="w-64">
       <AdminSidebar />
     </div>
@@ -16,3 +17,5 @@ const AdminDashboard = () => {
 
 
 export default AdminDashboard;
+
+

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const HomeSlider = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto relative">
+    <div className="w-full mx-auto relative">
       
 
       <div className="carousel w-full shadow-2xl overflow-hidden relative">

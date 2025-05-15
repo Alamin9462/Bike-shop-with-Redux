@@ -18,6 +18,7 @@ import MyOrder from "../page/MyOrder";
 import ProductDetails from "../page/ProductDetails";
 import Contact from "../page/Contact";
 import FAQPage from "../page/FAQPage";
+import Admin from "../admin/admin";
 
 
 const router = createBrowserRouter([
@@ -77,8 +78,11 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>,
     children: [
-
-        
+       
+         {
+          path: "",
+          element: <Admin />,
+        },
         {
           path: "manage-user",
           element: <ManageUsers />,
